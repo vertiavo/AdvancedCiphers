@@ -3,22 +3,19 @@ package com.team
 fun main(args: Array<String>) {
 
     print("Enter polynomial: ")
-    val coefficient = readLine()!!
-    val coefficientArray  = convertToBooleanArray(coefficient)
+    val polynomial = readLine()!!
+    val polynomialArray  = convertToBooleanArray(polynomial)
 
-    val generator = PolynomialGenerator(coefficientArray)
-    val polynomial = generator.generate()
-    val number = generator.calculateNumber()
+    val generator = Generator(polynomialArray)
+    val result = generator.generate()
 
-    println("Generated polynomial: $polynomial")
-
-    println("Generated number: $number")
+    println("\nGenerated polynomial: $result")
 }
 
-fun convertToBooleanArray(coefficient: String): BooleanArray {
-    val array = BooleanArray(coefficient.length)
-    for (i in 0 until coefficient.length) {
-        array[i] = coefficient[i].toBoolean()
+fun convertToBooleanArray(polynomial: String): BooleanArray {
+    val array = BooleanArray(polynomial.length)
+    for (i in 0 until polynomial.length) {
+        array[i] = polynomial[i].toBoolean()
     }
 
     return array
