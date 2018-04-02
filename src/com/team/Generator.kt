@@ -5,10 +5,11 @@ class Generator(private var polynomial: BooleanArray) {
     private val seed = polynomial.clone()
 
     fun generate(): String {
+        println("LFSR started")
         val builder = StringBuilder()
         val length = polynomial.size - 1
 
-        for (i in 0 until length + 1) {
+        for (i in 0 until length * 2) {
             if (polynomial.last()) {
                 builder.append("1")
             } else {
@@ -24,6 +25,7 @@ class Generator(private var polynomial: BooleanArray) {
             polynomial[0] = xorValue
         }
 
+        println("LFSR finished")
         return builder.toString()
     }
 
